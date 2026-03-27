@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - "techdocs/**"
+      - "**"
       - ".github/workflows/techdocs-pages.yml"
   workflow_dispatch:
 
@@ -22,9 +22,6 @@ jobs:
   build:
     name: Build Techdocs
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: techdocs
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -34,7 +31,7 @@ jobs:
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: techdocs/package-lock.json
+          cache-dependency-path: package-lock.json
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -48,7 +45,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: techdocs/dist
+          path: dist
 
   deploy:
     name: Deploy to GitHub Pages
