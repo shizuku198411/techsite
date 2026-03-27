@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>drizzle techdocs</title>
+    <meta
+      name="description"
+      content="個人的技術サイト"
+    />
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      const currentUrl = new URL(window.location.href);
+      const redirect = currentUrl.searchParams.get("redirect");
+      if (redirect) {
+        const cleanBase = currentUrl.pathname.endsWith("/")
+          ? currentUrl.pathname
+          : `${currentUrl.pathname}/`;
+        window.history.replaceState(
+          null,
+          "",
+          `${cleanBase}${redirect.replace(/^\//, "")}`,
+        );
+      }
+    </script>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecting...</title>
+  </head>
+  <body>
+    <script>
+      const currentUrl = new URL(window.location.href);
+      const pathname = currentUrl.pathname;
+      const search = currentUrl.search;
+      const hash = currentUrl.hash;
+      const segments = pathname.split("/");
+      const repoBase = segments.length > 1 ? `/${segments[1]}/` : "/";
+      const routePath = pathname.startsWith(repoBase)
+        ? pathname.slice(repoBase.length - 1)
+        : pathname;
+
+      const redirectUrl =
+        repoBase +
+        `?redirect=${encodeURIComponent(routePath + search + hash)}`;
+
+      window.location.replace(redirectUrl);
+    </script>
+  </body>
+</html>
