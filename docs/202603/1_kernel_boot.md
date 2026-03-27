@@ -1,6 +1,6 @@
 ---
 title: カーネル開発 #1 ブート処理と kernel_main までの流れ
-date: 2026-03-27
+date: 2026-03-26
 excerpt: リンカスクリプトの配置から初期スタックの設定、kernel_main へ制御が移るまでを整理する
 tags: kernel, riscv32, boot, linker
 ---
@@ -16,6 +16,9 @@ tags: kernel, riscv32, boot, linker
 - `kernel_main` にジャンプしてC側の処理へ移る
 
 まだ割り込み処理やメモリ初期化は入っていませんが、カーネルとして最初に必要になる骨格はここで一通り揃います。
+
+> ソースコードは以下リポジトリで公開しています。
+> [GitHub: drizzle](https://github.com/shizuku198411/drizzle)
 
 ## 全体の流れ
 

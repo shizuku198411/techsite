@@ -380,6 +380,22 @@ pre {
   font-size: 0.95rem;
 }
 
+.article-body blockquote {
+  margin: 18px 0 22px;
+  padding: 10px 0 10px 16px;
+  border-left: 3px solid rgba(156, 207, 255, 0.42);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.article-body blockquote p {
+  margin: 0 0 10px;
+  color: rgba(228, 231, 235, 0.74);
+}
+
+.article-body blockquote p:last-child {
+  margin-bottom: 0;
+}
+
 .article-body pre {
   overflow-x: auto;
   margin: 18px 0 22px;
@@ -424,6 +440,17 @@ pre {
   background: #171a1d;
   color: #9ccfff;
   font-size: 0.88em;
+}
+
+.article-body a {
+  color: #9ccfff;
+  text-decoration: underline;
+  text-decoration-color: rgba(156, 207, 255, 0.7);
+  text-underline-offset: 0.16em;
+}
+
+.article-body a:hover {
+  color: #b7ddff;
 }
 
 .heading-anchor {

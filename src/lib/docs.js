@@ -41,11 +41,30 @@ function escapeHtml(value) {
     .replace(/>/g, "&gt;");
 }
 
+function renderInline(value) {
+  const parts = value.split(/(`[^`]+`)/g);
+  return parts
+    .map((part) => {
+      if (part.startsWith("`") && part.endsWith("`") && part.length >= 2) {
+        return `<code>${escapeHtml(part.slice(1, -1))}</code>`;
+      }
+
+      const escaped = escapeHtml(part);
+      return escaped.replace(
+        /\[([^\]]+)\]\(([^)]+)\)/g,
+        (_match, label, href) =>
+          `<a href="${href}" target="_blank" rel="noreferrer">${label}</a>`,
+      );
+    })
+    .join("");
+}
+
 function renderMarkdown(markdown) {
   const lines = markdown.split("\n");
   const html = [];
   const headings = [];
   let inList = false;
+  let inBlockquote = false;
   let inCodeBlock = false;
   let codeLanguage = "";
   let codeLines = [];
@@ -59,9 +78,17 @@ function renderMarkdown(markdown) {
     }
   };
 
+  const closeBlockquote = () => {
+    if (inBlockquote) {
+      html.push("</blockquote>");
+      inBlockquote = false;
+    }
+  };
+
   for (const line of lines) {
     if (line.startsWith("```")) {
       closeList();
+      closeBlockquote();
       if (inCodeBlock) {
         const languageClass = codeLanguage ? ` class="language-${codeLanguage}"` : "";
         html.push(
@@ -88,8 +115,21 @@ function renderMarkdown(markdown) {
 
     if (!line.trim()) {
       closeList();
+      closeBlockquote();
       continue;
     }
+
+    if (line.startsWith("> ")) {
+      closeList();
+      if (!inBlockquote) {
+        html.push("<blockquote>");
+        inBlockquote = true;
+      }
+      html.push(`<p>${renderInline(line.slice(2))}</p>`);
+      continue;
+    }
+
+    closeBlockquote();
 
     if (line.startsWith("### ")) {
       closeList();
@@ -99,7 +139,7 @@ function renderMarkdown(markdown) {
       const id = slugify(`${numbering}-${title}`);
       headings.push({ level: 3, title, numbering, id });
       html.push(
-        `<h3 id="${id}"><a class="heading-anchor" href="#${id}">${numbering} ${escapeHtml(title)}</a></h3>`,
+        `<h3 id="${id}"><a class="heading-anchor" href="#${id}">${numbering} ${renderInline(title)}</a></h3>`,
       );
       continue;
     }
@@ -113,7 +153,7 @@ function renderMarkdown(markdown) {
       const id = slugify(`${numbering}-${title}`);
       headings.push({ level: 2, title, numbering, id });
       html.push(
-        `<h2 id="${id}"><a class="heading-anchor" href="#${id}">${numbering}. ${escapeHtml(title)}</a></h2>`,
+        `<h2 id="${id}"><a class="heading-anchor" href="#${id}">${numbering}. ${renderInline(title)}</a></h2>`,
       );
       continue;
     }
@@ -123,15 +163,16 @@ function renderMarkdown(markdown) {
         html.push("<ul>");
         inList = true;
       }
-      html.push(`<li>${line.slice(2)}</li>`);
+      html.push(`<li>${renderInline(line.slice(2))}</li>`);
       continue;
     }
 
     closeList();
-    html.push(`<p>${escapeHtml(line)}</p>`);
+    html.push(`<p>${renderInline(line)}</p>`);
   }
 
   closeList();
+  closeBlockquote();
 
   if (inCodeBlock) {
     const languageClass = codeLanguage ? ` class="language-${codeLanguage}"` : "";
