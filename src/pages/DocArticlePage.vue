@@ -49,7 +49,7 @@ onMounted(() => {
   <section v-if="article" class="page-card article-page">
     <p class="page-label">Docs / {{ article.yearMonth }}</p>
     <h1 class="page-title">{{ article.title }}</h1>
-    <p class="article-meta">{{ article.date }}</p>
+    <p class="article-meta">{{ article.displayDate }}</p>
     <div class="tag-row">
       <span v-for="tag in article.tags" :key="tag" class="tag-chip">{{ tag }}</span>
     </div>

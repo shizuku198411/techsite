@@ -193,20 +193,25 @@ const docModules = import.meta.glob("../../docs/*/*.md", {
   import: "default",
 });
 
+function normalizePublishedAt(value) {
+  return value.replace(" ", "T");
+}
+
 export const docs = Object.entries(docModules)
   .map(([path, source]) => {
     const { metadata, body } = parseFrontMatter(source);
     const rendered = renderMarkdown(body);
     const [, yearMonth, fileName] = path.match(/docs\/([^/]+)\/([^/]+)\.md$/) ?? [];
     const slug = fileName;
-    const date = metadata.date ?? `${yearMonth}-01`;
+    const publishedAt = normalizePublishedAt(metadata.date ?? `${yearMonth}-01T00:00:00`);
 
     return {
       id: `${yearMonth}/${slug}`,
       yearMonth,
       slug,
       title: metadata.title ?? slug,
-      date,
+      date: publishedAt,
+      displayDate: publishedAt.slice(0, 10),
       excerpt: metadata.excerpt ?? "",
       tags: metadata.tags ? metadata.tags.split(",").map((item) => item.trim()) : [],
       body,

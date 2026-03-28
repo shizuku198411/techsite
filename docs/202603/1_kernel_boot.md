@@ -1,6 +1,6 @@
 ---
 title: カーネル開発 #1 ブート処理と kernel_main までの流れ
-date: 2026-03-26
+date: 2026-03-26 21:00:00
 excerpt: リンカスクリプトの配置から初期スタックの設定、kernel_main へ制御が移るまでを整理する
 tags: kernel, riscv32, boot, linker
 ---

@@ -58,7 +58,7 @@ function changePage(page) {
 
     <div class="article-stack">
       <article v-for="doc in pagedDocs" :key="doc.id" class="article-card">
-        <p class="article-meta">{{ doc.date }} / {{ doc.yearMonth }}</p>
+        <p class="article-meta">{{ doc.displayDate }} / {{ doc.yearMonth }}</p>
         <h2 class="article-title">
           <RouterLink :to="doc.path">{{ doc.title }}</RouterLink>
         </h2>
