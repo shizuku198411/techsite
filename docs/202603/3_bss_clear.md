@@ -2,6 +2,8 @@
 title: カーネル開発 #3 .bssゼロクリア
 date: 2026-03-28 09:00:00
 excerpt: ブートストラップ処理として .bssのゼロクリア、PANIC、メモリレイアウト表示を実装する
+series: riscv-kernel
+seriesOrder: 3
 tags: kernel, riscv32, bss, panic, memory
 ---
 

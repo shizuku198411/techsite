@@ -2,6 +2,8 @@
 title: カーネル開発 #7 syscall の実装
 date: 2026-03-29 17:00:00
 excerpt: U-Mode から ecall で S-Mode へ入り、dispatcher 経由で putchar syscall を処理して printf を使えるようにする
+series: riscv-kernel
+seriesOrder: 7
 tags: kernel, riscv32, syscall, trap, usermode
 ---
 

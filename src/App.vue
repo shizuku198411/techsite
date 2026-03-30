@@ -7,6 +7,7 @@ const router = useRouter();
 
 const navigationItems = [
   { label: "Home", to: "/" },
+  { label: "Series", to: "/series" },
   { label: "Docs", to: "/docs" },
   { label: "About", to: "/about" },
   { label: "Privacy", to: "/privacy" },

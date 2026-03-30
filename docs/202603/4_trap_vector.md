@@ -2,6 +2,8 @@
 title: カーネル開発 #4 trapベクタの実装
 date: 2026-03-28 22:20:00
 excerpt: stvec の設定、trap_entry の実装、sscratch 用 scratch 構造体を使った退避処理を整える
+series: riscv-kernel
+seriesOrder: 4
 tags: kernel, riscv32, trap, exception, stvec
 ---
 

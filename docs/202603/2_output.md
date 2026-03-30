@@ -2,6 +2,8 @@
 title: カーネル開発 #2 OpenSBI を利用した文字出力と printf の実装
 date: 2026-03-27 21:00:00
 excerpt: OpenSBI 経由で文字を出力し、最小限の printf を実装してデバッグ出力の基盤を整備する
+series: riscv-kernel
+seriesOrder: 2
 tags: kernel, riscv32, output, sbi, printf
 ---
 

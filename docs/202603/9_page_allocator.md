@@ -2,6 +2,8 @@
 title: カーネル開発 #9 ページアロケータの実装
 date: 2026-03-29 18:30:00
 excerpt: bitmap を使った palloc() / pfree() を実装し、連続ページ確保と解放をできるようにする
+series: riscv-kernel
+seriesOrder: 9
 tags: kernel, riscv32, memory, bitmap, page, allocator
 ---
 

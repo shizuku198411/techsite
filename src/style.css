@@ -204,6 +204,136 @@ pre {
   font-size: 0.95rem;
 }
 
+.home-section {
+  margin-top: 34px;
+}
+
+.section-heading {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 14px;
+}
+
+.section-kicker {
+  margin: 0;
+  color: rgba(156, 207, 255, 0.82);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.section-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.series-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.series-card {
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(156, 207, 255, 0.06), rgba(156, 207, 255, 0.015)),
+    #14181b;
+}
+
+.series-card-expandable {
+  cursor: pointer;
+  transition:
+    border-color 160ms ease,
+    transform 160ms ease,
+    background 160ms ease;
+}
+
+.series-card-expandable:hover,
+.series-card-expandable.is-expanded {
+  border-color: rgba(156, 207, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.series-card-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.series-toggle {
+  color: rgba(156, 207, 255, 0.86);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+}
+
+.series-meta {
+  margin: 0 0 10px;
+  color: rgba(156, 207, 255, 0.86);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.74rem;
+}
+
+.series-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.series-summary {
+  margin: 10px 0 0;
+  color: rgba(228, 231, 235, 0.62);
+  font-size: 0.9rem;
+}
+
+.series-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.series-link {
+  color: #9ccfff;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.8rem;
+}
+
+.series-link.is-muted {
+  color: rgba(228, 231, 235, 0.7);
+}
+
+.series-docs-panel {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.series-docs-list {
+  display: grid;
+  gap: 0;
+}
+
+.series-doc-item {
+  padding: 14px 0 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.series-doc-item:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.series-pagination {
+  margin-top: 18px;
+}
+
+
 .search-summary {
   margin: 18px 0 0;
   color: rgba(228, 231, 235, 0.68);

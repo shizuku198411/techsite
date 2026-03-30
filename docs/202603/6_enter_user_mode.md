@@ -2,6 +2,8 @@
 title: カーネル開発 #6 U-Modeへの移行
 date: 2026-03-29 11:30:00
 excerpt: ユーザバイナリを固定アドレスへ配置し、sepc と user stack を設定して sret で U-Mode へ入る
+series: riscv-kernel
+seriesOrder: 6
 tags: kernel, riscv32, usermode, sret, sepc
 ---
 

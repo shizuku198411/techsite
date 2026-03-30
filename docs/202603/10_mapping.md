@@ -2,6 +2,8 @@
 title: カーネル開発 #10 カーネル / ユーザ空間のマッピング
 date: 2026-03-30 10:30:00
 excerpt: SV32 のページテーブルを導入し、kernel の identity mapping と user の仮想アドレスマッピングを実装する
+series: riscv-kernel
+seriesOrder: 10
 tags: kernel, riscv32, memory, paging, sv32, usermode
 ---
 

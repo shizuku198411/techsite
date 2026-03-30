@@ -2,6 +2,8 @@
 title: カーネル開発 #8 bitmap によるページ管理の準備
 date: 2026-03-29 17:30:00
 excerpt: free ram を 4KiB ページ単位に区切り、先頭へ bitmap を配置して管理対象ページ範囲を確定する
+series: riscv-kernel
+seriesOrder: 8
 tags: kernel, riscv32, memory, bitmap, page
 ---
 

@@ -2,6 +2,8 @@
 title: カーネル開発 #5 タイマ割り込みの実装
 date: 2026-03-28 23:10:00
 excerpt: Supervisor Timer Interrupt を有効化し、安全な時刻取得と compare 更新を行いながら tick カウンタを進める
+series: riscv-kernel
+seriesOrder: 5
 tags: kernel, riscv32, timer, interrupt, scheduler
 ---
 

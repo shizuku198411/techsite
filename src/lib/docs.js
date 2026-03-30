@@ -1,3 +1,5 @@
+import { seriesDefinitions } from "./series";
+
 function parseFrontMatter(source) {
   const normalized = source.replace(/\r\n/g, "\n");
   if (!normalized.startsWith("---\n")) {
@@ -214,6 +216,8 @@ export const docs = Object.entries(docModules)
       displayDate: publishedAt.slice(0, 10),
       excerpt: metadata.excerpt ?? "",
       tags: metadata.tags ? metadata.tags.split(",").map((item) => item.trim()) : [],
+      series: metadata.series ?? "",
+      seriesOrder: metadata.seriesOrder ? Number(metadata.seriesOrder) : null,
       body,
       html: rendered.html,
       headings: rendered.headings,
@@ -224,6 +228,38 @@ export const docs = Object.entries(docModules)
 
 export function getLatestDocs(count) {
   return docs.slice(0, count);
+}
+
+export function getSeriesCollections() {
+  return Object.values(
+    docs.reduce((groups, doc) => {
+      if (!doc.series || doc.seriesOrder == null) {
+        return groups;
+      }
+
+      const definition = seriesDefinitions[doc.series];
+      if (!definition) {
+        return groups;
+      }
+
+      if (!groups[doc.series]) {
+        groups[doc.series] = {
+          ...definition,
+          docs: [],
+        };
+      }
+
+      groups[doc.series].docs.push(doc);
+      groups[doc.series].docs.sort((left, right) => left.seriesOrder - right.seriesOrder);
+      return groups;
+    }, {}),
+  )
+    .map((series) => ({
+      ...series,
+      latest: series.docs[series.docs.length - 1],
+      first: series.docs[0],
+    }))
+    .sort((left, right) => right.latest.date.localeCompare(left.latest.date));
 }
 
 export function getPagedDocs(page, pageSize) {
