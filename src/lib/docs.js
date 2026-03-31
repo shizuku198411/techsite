@@ -43,6 +43,14 @@ function escapeHtml(value) {
     .replace(/>/g, "&gt;");
 }
 
+function escapeAttribute(value) {
+  return escapeHtml(value).replace(/"/g, "&quot;");
+}
+
+function renderImage(alt, src) {
+  return `<img src="${escapeAttribute(src)}" alt="${escapeAttribute(alt)}" loading="lazy" />`;
+}
+
 function renderInline(value) {
   const parts = value.split(/(`[^`]+`)/g);
   return parts
@@ -51,12 +59,16 @@ function renderInline(value) {
         return `<code>${escapeHtml(part.slice(1, -1))}</code>`;
       }
 
-      const escaped = escapeHtml(part);
-      return escaped.replace(
+      return part
+        .replace(
+          /!\[([^\]]*)\]\(([^)]+)\)/g,
+          (_match, alt, src) => renderImage(alt, src),
+        )
+        .replace(
         /\[([^\]]+)\]\(([^)]+)\)/g,
         (_match, label, href) =>
-          `<a href="${href}" target="_blank" rel="noreferrer">${label}</a>`,
-      );
+            `<a href="${escapeAttribute(href)}" target="_blank" rel="noreferrer">${escapeHtml(label)}</a>`,
+        );
     })
     .join("");
 }
