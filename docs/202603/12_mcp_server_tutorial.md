@@ -1,9 +1,9 @@
 ---
-title: MCP Server #1 Goで始める天気予報MCPサーバ構築
-date: 2026-03-31 22:10:00
+title: MCP Server #2 Goで始める天気予報MCPサーバ構築
+date: 2026-03-31 22:30:00
 excerpt: MCP公式のGoチュートリアルをベースに、日本向けの天気APIと責務分離したGo構成で weather MCPサーバを step by step で構築し、Codex VS Code Extension から利用する
 series: mcp-server
-seriesOrder: 1
+seriesOrder: 2
 tags: mcp, go, codex, vscode, open-meteo, tutorial
 ---
 
