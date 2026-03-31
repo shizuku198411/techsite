@@ -1,4 +1,10 @@
 export const seriesDefinitions = {
+  "mcp-server": {
+    id: "mcp-server",
+    title: "MCP Server",
+    description:
+      "Model Context Protocol サーバを Go で実装しながら、ツール設計やクライアント連携を段階的に整理していくチュートリアルシリーズです。",
+  },
   "riscv-kernel": {
     id: "riscv-kernel",
     title: "RISC-V カーネル開発",

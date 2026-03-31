@@ -16,27 +16,6 @@ const seriesGroups = getSeriesCollections();
 
     <section class="home-section">
       <div class="section-heading">
-        <p class="section-kicker">Series</p>
-        <h2 class="section-title">シリーズ</h2>
-      </div>
-
-      <div class="series-grid">
-        <article v-for="series in seriesGroups.slice(0, 1)" :key="series.id" class="series-card">
-          <p class="series-meta">{{ series.docs.length }} posts / latest {{ series.latest.displayDate }}</p>
-          <h3 class="series-title">{{ series.title }}</h3>
-          <p class="series-summary">
-            {{ series.description }}
-          </p>
-          <div class="series-links">
-            <RouterLink :to="series.first.path" class="series-link">Start from #1</RouterLink>
-            <RouterLink to="/series" class="series-link is-muted">More series</RouterLink>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="home-section">
-      <div class="section-heading">
         <p class="section-kicker">Latest</p>
         <h2 class="section-title">最新の更新</h2>
       </div>

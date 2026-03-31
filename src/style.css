@@ -234,12 +234,14 @@ pre {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 16px;
+  align-items: start;
 }
 
 .series-card {
   padding: 18px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
+  align-self: start;
   background:
     linear-gradient(180deg, rgba(156, 207, 255, 0.06), rgba(156, 207, 255, 0.015)),
     #14181b;

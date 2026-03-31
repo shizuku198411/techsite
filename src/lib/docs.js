@@ -1,5 +1,7 @@
 import { seriesDefinitions } from "./series";
 
+const baseUrl = import.meta.env.BASE_URL ?? "/";
+
 function parseFrontMatter(source) {
   const normalized = source.replace(/\r\n/g, "\n");
   if (!normalized.startsWith("---\n")) {
@@ -47,8 +49,16 @@ function escapeAttribute(value) {
   return escapeHtml(value).replace(/"/g, "&quot;");
 }
 
+function resolveAssetPath(path) {
+  if (!path.startsWith("/") || path.startsWith("//")) {
+    return path;
+  }
+
+  return `${baseUrl.replace(/\/$/, "")}${path}`;
+}
+
 function renderImage(alt, src) {
-  return `<img src="${escapeAttribute(src)}" alt="${escapeAttribute(alt)}" loading="lazy" />`;
+  return `<img src="${escapeAttribute(resolveAssetPath(src))}" alt="${escapeAttribute(alt)}" loading="lazy" />`;
 }
 
 function renderInline(value) {
